@@ -1,1 +1,1 @@
-sed -i 's/\r//' runme.sh
+sed -i 's/\r//' *.sh
