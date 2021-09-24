@@ -4,7 +4,10 @@ import time
 import os
 
 count = 0
-myhost = os.uname()[1]
+try:
+    myhost = os.uname()[1]
+except Exception as error:
+    myhost = "Non-Linux"
 dockerized = False
 if os.path.isfile('/.dockerenv'):
     dockerized = True
@@ -32,6 +35,6 @@ class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
         return
 
 handler_object = MyHttpRequestHandler
-PORT = 8080
+PORT = 8001
 my_server = socketserver.TCPServer(("", PORT), handler_object)
 my_server.serve_forever()
